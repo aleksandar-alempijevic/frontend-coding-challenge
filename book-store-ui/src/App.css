@@ -1,0 +1,79 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 12px;
+  height: 187px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #353434;
+  margin: 0 0 4px 0;
+  border-radius: 12px;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.logo {
+  padding: 12px;
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.top {
+  display: flex;
+}
+
+.header,
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.details {
+  flex: 1;
+}
+
+.books {
+  padding: 12px 0;
+}
+
+.title {
+  font-weight: 600;
+  padding: 0 0 8px 0;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  padding: 0 0 8px 0;
+}
+
+.book-title {
+  margin: 0 8px 0 0;
+}
+
+.star {
+  font-size: 1.5em;
+  color: #d3d3d3;
+}
+
+.star.filled {
+  color: #ffc107;
+}
