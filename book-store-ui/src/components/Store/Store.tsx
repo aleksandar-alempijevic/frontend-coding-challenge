@@ -7,7 +7,7 @@ import StoreInfo from "../StoreInfo";
 import "./Store.css";
 function Store({ store }: { store: IStore }) {
   return (
-    <div className="card p-3 flex justify-between flex-col rounded sm-font-small">
+    <div className="card p-3 flex justify-between flex-col rounded">
       <div className="flex align-center">
         <Logo storeImage={store.storeImage} name={store.name} />
         <div className="flex-1">

@@ -1,23 +1,28 @@
 import { useEffect, useState } from "react";
 import { getStores } from "../services/stores.service";
 import { IStore } from "../model/book-shop.model";
-import { normalizeResponse } from "../lib/normalize-response";
+import { normalizeResponse } from "../lib/normalize-helpers";
 export const useStoresData = () => {
   const [stores, setStores] = useState<IStore[]>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
+  const fetchStores = async () => {
     setLoading(true);
-    getStores().then((response) => {
+    try {
+      const response = await getStores();
       setStores(normalizeResponse(response));
       setLoading(false);
-    }).catch((e) => {
+      setError(false);
+    } catch (error) {
       setError(true);
       setLoading(false);
-    });
+    }
+  };
+
+  useEffect(() => {
+    fetchStores();
   }, []);
 
-  return {stores, loading, error};
+  return { stores, loading, error };
 };
-

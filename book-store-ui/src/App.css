@@ -142,11 +142,11 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .sm-font-small {
+  body {
     font-size: 12px;
   }
 
-  .sm-display-none {
+  .sm-hidden {
     display: none;
   }
 
