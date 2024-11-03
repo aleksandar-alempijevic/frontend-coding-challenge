@@ -1,0 +1,12 @@
+.card {
+  height: 187px;
+  background-color: var(--bg-color);
+  margin: 0 0 var(--small-space) 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .card {
+    height: 160px;
+    width: 320px;
+  }
+}

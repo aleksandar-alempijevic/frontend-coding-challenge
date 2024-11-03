@@ -1,6 +1,8 @@
 import { IStoresResponse } from "../model/book-shop.model";
 
-const apiBaseUrl = "http://localhost:3000";
+const apiBaseUrl = import.meta.env.VITE_API_BASE;
+
+export const flagCDN = import.meta.env.VITE_FLAG_CDN;
 
 export const getStores = async (): Promise<IStoresResponse> => {
   let data;
@@ -8,7 +10,7 @@ export const getStores = async (): Promise<IStoresResponse> => {
     const response = await fetch(`${apiBaseUrl}/stores`);
     data = await response.json();
   } catch (error) {
-    console.error(error);
+    throw new Error("Error fetching stores data");
   }
 
   return data;
