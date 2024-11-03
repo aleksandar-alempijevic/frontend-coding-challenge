@@ -1,10 +1,10 @@
 export interface IRelationshipEntity {
-    id: string;
-    type: string;
+  id: string;
+  type: string;
 }
 
 export interface IRelationship {
-  data: IRelationshipEntity | IRelationshipEntity[];
+  data: IRelationshipEntity & IRelationshipEntity[];
 }
 
 export interface IStore {
@@ -30,9 +30,11 @@ export interface ICountry {
 export interface IAuthor {
   fullName: string;
 }
- 
+
+export interface IAttributes extends IStore, IBook, ICountry, IAuthor {}
+
 export interface IItem {
-  attributes: IStore & IBook & ICountry & IAuthor;
+  attributes: IAttributes;
   id: string;
   type: string;
   relationships: { [key: string]: IRelationship };

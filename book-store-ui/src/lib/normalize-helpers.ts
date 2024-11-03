@@ -1,4 +1,5 @@
 import {
+  IAttributes,
   IItem,
   IRelationshipEntity,
   IStore,
@@ -22,7 +23,7 @@ const findRelatedItem = (
 const normalizeSingleRelationship = (
   includedItems: IItem[],
   relationship: IRelationshipEntity,
-  normalizedItem: any,
+  normalizedItem: IAttributes,
 ) => {
   const relatedItem = findRelatedItem(includedItems, relationship);
 
@@ -46,10 +47,7 @@ const normalizeSubRelationships = (
 
   Object.values(relationships).forEach((relationship) => {
     if (relationship?.data) {
-      const relatedSubItem = findRelatedItem(
-        includedItems,
-        relationship?.data as IRelationshipEntity,
-      );
+      const relatedSubItem = findRelatedItem(includedItems, relationship?.data);
       if (relatedSubItem) {
         relatedItem.attributes = {
           ...relatedItem.attributes,
@@ -79,7 +77,7 @@ const normalizeRelatedItem = (
 const normalizeArrayRelationship = (
   includedItems: IItem[],
   relationships: IRelationshipEntity[],
-  normalizedItem: any,
+  normalizedItem: IAttributes,
   key: string,
 ) => {
   const relatedItems = relationships.map((rel) =>
@@ -112,13 +110,13 @@ export const normalizeResponse = (response: IStoresResponse): IStore[] => {
       if (!Array.isArray(relationship?.data)) {
         normalizedItem = normalizeSingleRelationship(
           includedItems,
-          relationship?.data as IRelationshipEntity,
+          relationship?.data,
           normalizedItem,
         );
       } else if (relationship?.data) {
         normalizedItem = normalizeArrayRelationship(
           includedItems,
-          relationship?.data as IRelationshipEntity[],
+          relationship?.data,
           normalizedItem,
           key,
         );
