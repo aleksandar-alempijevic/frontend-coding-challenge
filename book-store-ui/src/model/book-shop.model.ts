@@ -13,8 +13,8 @@ export interface IStore {
   rating: number;
   storeImage: string;
   website: string;
-  books?: IBook[];
-  countries?: ICountry;
+  books: IBook[];
+  countries: ICountry;
 }
 
 export interface IBook {

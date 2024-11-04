@@ -1,32 +1,21 @@
 import { IStore } from "../../model/book-shop.model";
-import BestSellerList from "../BestSellerList";
-import CountryFlag from "../CountryFlag";
+import BookList from "../BookList";
+import Footer from "../Footer";
+import Header from "../Header";
 import Logo from "../Logo/Logo";
-import Rating from "../Rating/Rating";
-import StoreInfo from "../StoreInfo";
 import "./Store.css";
+
 function Store({ store }: { store: IStore }) {
   return (
     <div className="card p-3 flex justify-between flex-col rounded">
       <div className="flex align-center">
         <Logo storeImage={store.storeImage} name={store.name} />
         <div className="flex-1">
-          <div className="flex justify-between align-center">
-            <div className="font-large font-bold color-primary">
-              {store.name}
-            </div>
-            <Rating rating={store.rating} />
-          </div>
-          <BestSellerList books={store.books} />
+          <Header store={store} />
+          <BookList books={store.books} displayCount={2} />
         </div>
       </div>
-      <div className="flex justify-between align-center">
-        <StoreInfo
-          establishmentDate={store.establishmentDate}
-          website={store.website}
-        />
-        <CountryFlag countries={store.countries} />
-      </div>
+      <Footer store={store} />
     </div>
   );
 }

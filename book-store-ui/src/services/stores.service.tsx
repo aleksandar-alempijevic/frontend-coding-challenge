@@ -15,3 +15,6 @@ export const getStores = async (): Promise<IStoresResponse> => {
 
   return data;
 };
+
+export const getFlagImageUrl = (code: string, size?: string) =>
+  `${flagCDN}/${size ?? "h24"}/${code.toLowerCase()}.png`;

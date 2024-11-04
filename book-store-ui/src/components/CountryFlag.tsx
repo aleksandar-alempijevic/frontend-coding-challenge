@@ -1,13 +1,11 @@
 import { IStore } from "../model/book-shop.model";
-import { flagCDN } from "../services/stores.service";
+import { getFlagImageUrl } from "../services/stores.service";
 
 function CountryFlag({ countries: country }: Pick<IStore, "countries">) {
+  const flagUrl = getFlagImageUrl(country.code.toLowerCase());
+
   return (
-    <img
-      src={`${flagCDN}/h24/${country?.code.toLowerCase()}.png`}
-      alt={country?.code.toLowerCase()}
-      className="block"
-    />
+    <img src={flagUrl} alt={country.code.toLowerCase()} className="block" />
   );
 }
 
