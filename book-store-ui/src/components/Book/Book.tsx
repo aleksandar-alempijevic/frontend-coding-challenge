@@ -1,4 +1,5 @@
 import { IBook } from "../../model/book-shop.model";
+import "./Book.css";
 
 function Book({ book }: { book: IBook }) {
   return (
